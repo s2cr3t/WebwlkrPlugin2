@@ -1,4 +1,4 @@
-# WebwlkrPlugin
+# WebwlkrPlugin2
 
 原[QChatGPT 项目](https://github.com/RockChinQ/QChatGPT)联网插件升级版，修改搜索方案，避免爬虫困扰
 使用前需要先pip install baidusearch
