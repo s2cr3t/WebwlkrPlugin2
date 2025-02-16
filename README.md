@@ -12,7 +12,7 @@
 配置完成 [QChatGPT](https://github.com/RockChinQ/QChatGPT) 主程序后，向机器人发送命令`!version`确保主程序版本高于`v2.5.0`之后，向机器人发送以下命令安装插件
 
 ```
-!plugin get https://github.com/RockChinQ/WebwlkrPlugin
+!plugin get https://github.com/RockChinQ/WebwlkrPlugin2
 ```
 
 重启机器人程序即可使用
