@@ -1,4 +1,4 @@
-from baidusearch.baidusearch import search  # Import baidusearch library
+from baidusearch import search  # Import baidusearch library
 from pkg.plugin.models import *
 from pkg.plugin.host import EventContext, PluginHost
 
@@ -35,15 +35,14 @@ class WebwlkrPlugin(Plugin):
 
         process = backend_mapping[config["backend"]]
 
-    @func("access_the_web")
+    @func("search_the_web")
     def _(search_string: str, brief_len: int = None):
-        """Call this function to search about the question before you answer any questions.
+        """Call this function to search about the question before you answer any questions.but DO NOT use this function to visite website
         - Do not search through google.com at any time.
-        - If user ask you to open a url (start with http:// or https://), visit it directly.
         - Summary the plain content result by yourself
 
         Args:
-            search_string(str): things to search or URL to visit
+            search_string(str): things to search
             brief_len(int): max length of the plain text content, recommend 1024-4096, prefer 4096. If not provided, default value from config will be used.
 
         Returns:
@@ -54,10 +53,8 @@ class WebwlkrPlugin(Plugin):
                 brief_len = config.get("brief_len", 4096)
 
             if search_string.startswith(("http://", "https://")):
-                # If it's a direct URL, use the original process function
                 return process(search_string, brief_len)
             else:
-                # Use Baidu search results instead of WebPilot
                 search_results = search(search_string)
                 return process_search_results(search_results, brief_len)
         except Exception as e:
@@ -72,10 +69,11 @@ def process_search_results(search_results: list, brief_len: int):
     """Process search results and return text content"""
     brief_text = ""
     for result in search_results:
-        title = result.get("title", "")
-        snippet = result.get("snippet", "")
-        if len(brief_text) + len(title + snippet) > brief_len:
-            break
-        brief_text += f"Title: {title}\nSnippet: {snippet}\n\n"
+        title = result['title']
+        abstract = result['abstract']
+        url = result['url']
+        # 将标题和摘要添加到brief_text中
+        brief_text += f"Title: {title}\nSnippet: {abstract}\nurl:{url}\n\n "
+    
 
     return brief_text.strip() if brief_text else "No relevant results found."
