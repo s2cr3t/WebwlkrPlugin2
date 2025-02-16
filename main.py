@@ -19,7 +19,7 @@ process: callable = None
 config: dict = None
 
 # Register plugin
-@register(name="Webwlkr", description="基于GPT的函数调用能力，为QChatGPT提供联网功能", version="0.1.3", author="RockChinQ")
+@register(name="Webwlkr", description="基于GPT的函数调用能力，为QChatGPT提供联网功能", version="0.1.4", author="RockChinQ")
 class WebwlkrPlugin(Plugin):
 
     # Triggered when plugin is loaded
