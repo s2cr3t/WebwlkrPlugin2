@@ -19,7 +19,7 @@ process: callable = None
 config: dict = None
 
 # Register plugin
-@register(name="Webwlkr", description="基于GPT的函数调用能力，为QChatGPT提供联网功能", version="0.1.4", author="RockChinQ")
+@register(name="Webwlkr", description="基于GPT的函数调用能力，为QChatGPT提供联网功能", version="0.1.5", author="s2cr3t")
 class WebwlkrPlugin(Plugin):
 
     # Triggered when plugin is loaded
@@ -27,7 +27,7 @@ class WebwlkrPlugin(Plugin):
         global process, config
         # Check if webwlkr.yaml exists
         if not os.path.exists("webwlkr.yaml"):
-            shutil.copyfile("plugins/WebwlkrPlugin/config-template.yaml", "webwlkr.yaml")
+            shutil.copyfile("plugins/WebwlkrPlugin2/config-template.yaml", "webwlkr.yaml")
         
         # Read configuration file
         with open("webwlkr.yaml", "r", encoding="utf-8") as f:
