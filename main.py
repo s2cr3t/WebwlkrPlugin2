@@ -1,4 +1,4 @@
-from baidusearch import search  # Import baidusearch library
+from plugins.WebwlkrPlugin2.baidusearch import search  # Import baidusearch library
 from pkg.plugin.models import *
 from pkg.plugin.host import EventContext, PluginHost
 
